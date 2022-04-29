@@ -4,10 +4,10 @@ import MySQLdb
 import pika, sys, os
 
 # MySQL configurations
-username = 'root'
-passwd = 'database'
-hostname = '127.0.0.1'
-db_name = "db"
+username = os.environ.get('DB_USERNAME')
+passwd = os.environ.get('DB_PASSWORD')
+hostname = os.environ.get('HOST')
+db_name = os.environ.get('DB_NAME')
 
 def on_message_received(ch,method,properties,body): 
     data = json.loads(body)
