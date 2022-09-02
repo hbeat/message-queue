@@ -2,12 +2,14 @@
 import json
 import MySQLdb
 import pika, sys, os
+from dotenv import load_dotenv
 
+load_dotenv()
 # MySQL configurations
-username = os.environ.get('DB_USERNAME')
-passwd = os.environ.get('DB_PASSWORD')
-hostname = os.environ.get('HOST')
-db_name = os.environ.get('DB_NAME')
+username = os.getenv('DB_USERNAME')
+passwd = os.getenv('DB_PASSWORD')
+hostname = os.getenv('HOST')
+db_name = os.getenv('DB_NAME')
 
 def on_message_received(ch,method,properties,body): 
     data = json.loads(body)
